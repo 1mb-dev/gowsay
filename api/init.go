@@ -8,7 +8,7 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/1mb-dev/gowsay/cow"
+	"github.com/1mb-dev/gowsay/v2/cow"
 )
 
 // NewModule creates a new API handler module with configuration from environment

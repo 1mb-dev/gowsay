@@ -4,7 +4,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/1mb-dev/gowsay/cow"
+	"github.com/1mb-dev/gowsay/v2/cow"
 )
 
 func TestGetUsageString(t *testing.T) {

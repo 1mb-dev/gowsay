@@ -7,7 +7,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/1mb-dev/gowsay/cow"
+	"github.com/1mb-dev/gowsay/v2/cow"
 )
 
 // TestRenderCLI tests the core CLI rendering logic without os.Exit

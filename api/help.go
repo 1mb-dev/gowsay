@@ -6,7 +6,7 @@ import (
 	"sort"
 	"strings"
 
-	"github.com/1mb-dev/gowsay/cow"
+	"github.com/1mb-dev/gowsay/v2/cow"
 )
 
 // GetBanner returns the startup banner with usage information
