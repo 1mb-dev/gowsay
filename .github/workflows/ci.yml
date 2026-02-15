@@ -66,7 +66,7 @@ jobs:
         fi
 
     - name: Run staticcheck
-      run: go run honnef.co/go/tools/cmd/staticcheck@latest -checks=all,-ST1000 ./...
+      run: go run honnef.co/go/tools/cmd/staticcheck@v0.6.0 -checks=all,-ST1000 ./...
 
   security:
     name: Security
