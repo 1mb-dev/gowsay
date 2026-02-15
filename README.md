@@ -98,7 +98,7 @@ curl http://localhost:9000/health
 
 ### Slack Command
 
-Deployed at https://gowsay.vnykmshr.com/say
+Deployed at https://gowsay.1mb-dev.com/say
 
 ```
 /moo [think|surprise] [cow] [mood] message
@@ -191,7 +191,7 @@ Docker image details:
 
 Example request:
 ```bash
-curl -X POST 'https://gowsay.vnykmshr.com/say' \
+curl -X POST 'https://gowsay.1mb-dev.com/say' \
   -H 'Content-Type: application/x-www-form-urlencoded' \
   --data-urlencode 'token=xxx' \
   --data-urlencode 'text=Hello World'

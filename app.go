@@ -14,8 +14,8 @@ import (
 	"syscall"
 	"time"
 
-	"github.com/vnykmshr/gowsay/api"
-	"github.com/vnykmshr/gowsay/cow"
+	"github.com/1mb-dev/gowsay/api"
+	"github.com/1mb-dev/gowsay/cow"
 )
 
 var version = "devel"

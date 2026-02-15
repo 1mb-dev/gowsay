@@ -520,6 +520,6 @@ The full source code is available on GitHub with comprehensive tests and documen
 - Lines of Code: ~2,500 (excluding tests)
 
 **Links**:
-- Repository: github.com/vnykmshr/gowsay
+- Repository: github.com/1mb-dev/gowsay
 - Architecture: docs/ARCHITECTURE.md
 - Contributing: CONTRIBUTING.md

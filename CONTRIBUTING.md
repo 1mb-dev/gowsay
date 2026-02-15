@@ -4,7 +4,7 @@
 
 ```bash
 # Clone and build
-git clone https://github.com/vnykmshr/gowsay.git
+git clone https://github.com/1mb-dev/gowsay.git
 cd gowsay
 make build
 

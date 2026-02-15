@@ -13,7 +13,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/vnykmshr/gowsay/api"
+	"github.com/1mb-dev/gowsay/api"
 )
 
 // TestServerIntegration tests the full HTTP server with all endpoints

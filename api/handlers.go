@@ -8,8 +8,8 @@ import (
 	"sort"
 	"strconv"
 
-	"github.com/vnykmshr/gowsay/cow"
-	"github.com/vnykmshr/gowsay/web"
+	"github.com/1mb-dev/gowsay/cow"
+	"github.com/1mb-dev/gowsay/web"
 )
 
 // MooRequest represents a request to generate cowsay

@@ -1,4 +1,4 @@
-module github.com/vnykmshr/gowsay
+module github.com/1mb-dev/gowsay
 
 go 1.24
 

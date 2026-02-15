@@ -8,7 +8,7 @@ import (
 	"reflect"
 	"testing"
 
-	"github.com/vnykmshr/gowsay/cow"
+	"github.com/1mb-dev/gowsay/cow"
 )
 
 func TestModule_Gowsay(t *testing.T) {
