@@ -77,7 +77,7 @@ func renderCow(f *Face) string {
 func wrapText(args []string, columns int) []string {
 	var msgs []string
 	for _, arg := range args {
-		expanded := strings.Replace(arg, "\t", "        ", -1)
+		expanded := strings.ReplaceAll(arg, "\t", "        ")
 		wrapped := wordwrap.WrapString(expanded, uint(columns))
 		msgs = append(msgs, strings.Split(wrapped, "\n")...)
 	}

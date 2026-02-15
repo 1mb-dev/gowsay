@@ -122,9 +122,9 @@ func TestModule_Gowsay(t *testing.T) {
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			if tt.name == "production" {
-				os.Setenv(envKey, envProduction)
+				_ = os.Setenv(envKey, envProduction)
 			} else {
-				os.Setenv(envKey, "")
+				_ = os.Setenv(envKey, "")
 			}
 			m := &Module{
 				token:   "abc123",

@@ -318,7 +318,7 @@ func TestFlagParsing(t *testing.T) {
 				random := fs.Bool("r", false, "Random")
 				columns := fs.Int("w", 40, "Columns")
 
-				fs.Parse([]string{})
+				_ = fs.Parse([]string{})
 
 				if *cowName != "default" {
 					t.Errorf("Default cow should be 'default', got '%s'", *cowName)

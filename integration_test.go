@@ -19,12 +19,12 @@ import (
 // TestServerIntegration tests the full HTTP server with all endpoints
 func TestServerIntegration(t *testing.T) {
 	// Set up test environment
-	os.Setenv("GOWSAY_TOKEN", "test-token")
-	os.Setenv("GOWSAY_COLUMNS", "40")
-	os.Setenv("PORT", "9999")
-	defer os.Unsetenv("GOWSAY_TOKEN")
-	defer os.Unsetenv("GOWSAY_COLUMNS")
-	defer os.Unsetenv("PORT")
+	_ = os.Setenv("GOWSAY_TOKEN", "test-token")
+	_ = os.Setenv("GOWSAY_COLUMNS", "40")
+	_ = os.Setenv("PORT", "9999")
+	defer func() { _ = os.Unsetenv("GOWSAY_TOKEN") }()
+	defer func() { _ = os.Unsetenv("GOWSAY_COLUMNS") }()
+	defer func() { _ = os.Unsetenv("PORT") }()
 
 	// Create API module and setup routes
 	module := api.NewModule()
@@ -50,7 +50,7 @@ func TestServerIntegration(t *testing.T) {
 		if err != nil {
 			t.Fatalf("Failed to call /health: %v", err)
 		}
-		defer resp.Body.Close()
+		defer func() { _ = resp.Body.Close() }()
 
 		if resp.StatusCode != http.StatusOK {
 			t.Errorf("Expected status 200, got %d", resp.StatusCode)
@@ -76,7 +76,7 @@ func TestServerIntegration(t *testing.T) {
 		if err := json.NewDecoder(resp.Body).Decode(&cowsResult); err != nil {
 			t.Fatalf("Failed to decode cows: %v", err)
 		}
-		resp.Body.Close()
+		_ = resp.Body.Close()
 
 		cows, ok := cowsResult["cows"]
 		if !ok || len(cows) == 0 {
@@ -96,7 +96,7 @@ func TestServerIntegration(t *testing.T) {
 		if err := json.NewDecoder(resp.Body).Decode(&moodsResult); err != nil {
 			t.Fatalf("Failed to decode moods: %v", err)
 		}
-		resp.Body.Close()
+		_ = resp.Body.Close()
 
 		moods, ok := moodsResult["moods"]
 		if !ok || len(moods) == 0 {
@@ -128,7 +128,7 @@ func TestServerIntegration(t *testing.T) {
 		if err := json.NewDecoder(resp.Body).Decode(&mooResp); err != nil {
 			t.Fatalf("Failed to decode moo response: %v", err)
 		}
-		resp.Body.Close()
+		_ = resp.Body.Close()
 
 		if mooResp.Output == "" || !strings.Contains(mooResp.Output, "Hello Integration Test") {
 			t.Error("Moo output should contain input text")
@@ -146,7 +146,7 @@ func TestServerIntegration(t *testing.T) {
 		if err := json.NewDecoder(resp.Body).Decode(&mooResp); err != nil {
 			t.Fatalf("Failed to decode query response: %v", err)
 		}
-		resp.Body.Close()
+		_ = resp.Body.Close()
 
 		if !strings.Contains(mooResp.Output, "Query Test") {
 			t.Error("Query response should contain input text")
@@ -170,7 +170,7 @@ func TestServerIntegration(t *testing.T) {
 		if resp.StatusCode != http.StatusOK {
 			t.Errorf("POST /api/moo (random): expected 200, got %d", resp.StatusCode)
 		}
-		resp.Body.Close()
+		_ = resp.Body.Close()
 
 		// Step 6: Test error handling - invalid cow
 		reqBody = map[string]string{
@@ -190,7 +190,7 @@ func TestServerIntegration(t *testing.T) {
 		if resp.StatusCode != http.StatusBadRequest {
 			t.Errorf("POST /api/moo (invalid cow): expected 400, got %d", resp.StatusCode)
 		}
-		resp.Body.Close()
+		_ = resp.Body.Close()
 
 		// Step 7: Test error handling - missing text
 		reqBody = map[string]string{
@@ -209,7 +209,7 @@ func TestServerIntegration(t *testing.T) {
 		if resp.StatusCode != http.StatusBadRequest {
 			t.Errorf("POST /api/moo (missing text): expected 400, got %d", resp.StatusCode)
 		}
-		resp.Body.Close()
+		_ = resp.Body.Close()
 	})
 
 	t.Run("WebUI", func(t *testing.T) {
@@ -217,7 +217,7 @@ func TestServerIntegration(t *testing.T) {
 		if err != nil {
 			t.Fatalf("Failed to call /: %v", err)
 		}
-		defer resp.Body.Close()
+		defer func() { _ = resp.Body.Close() }()
 
 		if resp.StatusCode != http.StatusOK {
 			t.Errorf("Expected status 200, got %d", resp.StatusCode)
@@ -241,7 +241,7 @@ func TestServerIntegration(t *testing.T) {
 		if err != nil {
 			t.Fatalf("Failed to send OPTIONS request: %v", err)
 		}
-		defer resp.Body.Close()
+		defer func() { _ = resp.Body.Close() }()
 
 		if resp.StatusCode != http.StatusOK && resp.StatusCode != http.StatusNoContent {
 			t.Errorf("Expected status 200 or 204 for OPTIONS, got %d", resp.StatusCode)
@@ -261,7 +261,7 @@ func waitForServer(url string, timeout time.Duration) error {
 	for time.Now().Before(deadline) {
 		resp, err := client.Get(url)
 		if err == nil {
-			resp.Body.Close()
+			_ = resp.Body.Close()
 			return nil
 		}
 		time.Sleep(50 * time.Millisecond)
@@ -276,8 +276,8 @@ func TestServerLifecycle(t *testing.T) {
 	}
 
 	// Set up environment
-	os.Setenv("PORT", "19999")
-	defer os.Unsetenv("PORT")
+	_ = os.Setenv("PORT", "19999")
+	defer func() { _ = os.Unsetenv("PORT") }()
 
 	// Create a context with timeout
 	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
@@ -302,7 +302,7 @@ func TestServerLifecycle(t *testing.T) {
 			<-ctx.Done()
 			shutdownCtx, shutdownCancel := context.WithTimeout(context.Background(), 5*time.Second)
 			defer shutdownCancel()
-			srv.Shutdown(shutdownCtx)
+			_ = srv.Shutdown(shutdownCtx)
 		}()
 
 		if err := srv.ListenAndServe(); err != nil && err != http.ErrServerClosed {
@@ -321,7 +321,7 @@ func TestServerLifecycle(t *testing.T) {
 	if err != nil {
 		t.Fatalf("Server health check failed: %v", err)
 	}
-	resp.Body.Close()
+	_ = resp.Body.Close()
 
 	if resp.StatusCode != http.StatusOK {
 		t.Errorf("Expected health check to return 200, got %d", resp.StatusCode)
