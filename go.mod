@@ -3,7 +3,7 @@ module github.com/1mb-dev/gowsay/v2
 go 1.24
 
 require (
-	github.com/mattn/go-runewidth v0.0.19
+	github.com/mattn/go-runewidth v0.0.20
 	github.com/mitchellh/go-wordwrap v1.0.1
 )
 
