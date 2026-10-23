@@ -8,6 +8,6 @@ on:
 
 jobs:
   ci:
-    uses: 1mb-dev/.github/.github/workflows/ci-go.yml@main
+    uses: 1mb-dev/.github/.github/workflows/ci-go.yml@ci/toolchain-majors
     with:
       build-binary: "./"
