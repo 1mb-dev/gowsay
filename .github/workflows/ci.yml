@@ -8,6 +8,15 @@ on:
 
 jobs:
   ci:
-    uses: 1mb-dev/.github/.github/workflows/ci-go.yml@main
+    uses: 1mb-dev/.github/.github/workflows/ci-go.yml@ci/pin-third-party
     with:
       build-binary: "./"
+
+  # Canary only: ci-go.yml calls secret-scan.yml@main, so the branch's change is exercised directly.
+  secret-scan-default:
+    uses: 1mb-dev/.github/.github/workflows/secret-scan.yml@ci/pin-third-party
+
+  secret-scan-override-no-hash:
+    uses: 1mb-dev/.github/.github/workflows/secret-scan.yml@ci/pin-third-party
+    with:
+      gitleaks-version: "8.30.0"
