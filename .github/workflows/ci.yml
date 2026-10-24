@@ -11,3 +11,7 @@ jobs:
     uses: 1mb-dev/.github/.github/workflows/ci-go.yml@ci/actions-v7
     with:
       build-binary: "./"
+
+  # Canary only: ci-go.yml calls secret-scan.yml@main, so the branch's change is exercised directly.
+  secret-scan-direct:
+    uses: 1mb-dev/.github/.github/workflows/secret-scan.yml@ci/actions-v7
