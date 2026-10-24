@@ -7,7 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-Nothing yet.
+### Fixed
+- `-r` and the random API could pick `sodomized-sheep`, which is listed but has no definition, about 1 time in 49. The list, the README and the defined cows now match.
 
 ## [2.0.0] - 2025-11-08
 

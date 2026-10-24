@@ -126,6 +126,11 @@ func TestList(t *testing.T) {
 	if len(cows) < 40 {
 		t.Errorf("List() returned too few cows: got %d, want at least 40", len(cows))
 	}
+	for _, c := range cows {
+		if !Exists(c) {
+			t.Errorf("List() includes non-existent cow: %s", c)
+		}
+	}
 }
 
 func TestExists(t *testing.T) {

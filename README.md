@@ -108,10 +108,10 @@ Deployed at https://gowsay.1mb-dev.com/say
 ```
 `apt`, `beavis.zen`, `bong`, `bud-frogs`, `bunny`, `calvin`, `cheese`, `cock`, `cower`,
 `daemon`, `default`, `dragon`, `dragon-and-cow`, `duck`, `elephant`, `elephant-in-snake`,
-`eyes`, `flaming-sheep`, `ghostbusters`, `gnu`, `head-in`, `hellokitty`, `kiss`, `kitty`,
+`eyes`, `flaming-sheep`, `ghostbusters`, `gnu`, `hellokitty`, `kitty`,
 `koala`, `kosh`, `luke-koala`, `mech-and-cow`, `meow`, `milk`, `moofasa`, `moose`,
 `mutilated`, `pony`, `pony-smaller`, `ren`, `sheep`, `skeleton`, `snowman`,
-`sodomized-sheep`, `stegosaurus`, `stimpy`, `suse`, `three-eyes`, `turkey`, `turtle`,
+`stegosaurus`, `stimpy`, `suse`, `three-eyes`, `turkey`, `turtle`,
 `tux`, `unipony`, `unipony-smaller`, `vader`, `vader-koala`, `www`
 ```
 ### Moods
